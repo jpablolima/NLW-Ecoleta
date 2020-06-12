@@ -18,7 +18,8 @@
 
       {% include "partials/page-header.html" %}
 
-      <form action="">
+      <form action="/savepoint" method="POST">
+
         <h1>Cadastro do ponto de coleta</h1>
 
         <fieldset>
@@ -80,27 +81,27 @@
           <span>Seleciona um ou mais ítens abaixo</span>
         </legend>
         <div class="items-grid">
-          <li data-id="1">
+          <li data-id="Lâmpadas">
             <img src="/assets/lampadas.svg" alt="Lâmpadas"/>
             <span>Lâmpadas</span>
           </li>
-          <li data-id="2">
+          <li data-id="Pilhas de Baterias">
             <img src="/assets/baterias.svg" alt="Pilhas de Baterias"/>
             <span>Pilhas de Baterias</span>
           </li>
-          <li data-id="3">
+          <li data-id="Papéis de Papelão">
             <img src="/assets/papeis-papelao.svg" alt="Papéis de Papelão"/>
             <span>Papéis de Papelão</span>
           </li>
-          <li data-id="4">
+          <li data-id="Résiduos Eletrônicos">
             <img src="/assets/eletronicos.svg" alt="Résiduos Eletrônicos"/>
             <span>Résiduos Eletrônicos</span>
           </li>
-          <li data-id="5">
+          <li data-id="Resíduos Orgânicos">
             <img src="/assets/organicos.svg" alt="Resíduos Orgânicos"/>
             <span>Resíduos Orgânicos</span>
           </li>
-          <li data-id="6">
+          <li data-id="Óleo de Cozinha">
             <img src="/assets/oleo.svg" alt="Óleo de Cozinha"/>
             <span>Óleo de Cozinha</span>
           </li>
@@ -109,13 +110,18 @@
       </fieldset>
 
       <button type="submit">Cadastrar ponto de coleta</button>
-    </form>
+
+    </div>
+
   </div>
 
-</form>
-</div>
+  {% block modal %}
+    {% if saved %}}
+      {%include "partials/point-created.html"%}}
+      {% endif%}
+    {% endblock modal %}
 
-<script src="./js/create-point.js"></script>
-</body>
+    <script src="./js/create-point.js"></script>
+  </body>
 
 </html>
